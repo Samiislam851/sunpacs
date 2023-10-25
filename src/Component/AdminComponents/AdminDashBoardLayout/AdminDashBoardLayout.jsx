@@ -9,7 +9,6 @@ import { ToastContainer } from 'react-toastify';
 
 const AdminDashBoardLayout = () => {
   const { registerUser, user, logOut, loginUser, isLogged, setIsLogged, toastPush } = useContext(AuthContext);
-  console.log(user);
   return (
     <>
       <ToastContainer

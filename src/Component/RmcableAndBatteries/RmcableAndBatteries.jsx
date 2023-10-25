@@ -28,7 +28,7 @@ const RmcableAndBatteries = () => {
         setLoading(false)
 
 
-    }, []);
+    }, [productsForHome]);
     return (
         <div>
 

@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Spinner from '../Spinner/Spinner';
 import axios from 'axios';
 import InverterCard from '../InverterCard/InverterCard';
+import { AuthContext } from '../../Provider/AuthContextProvider';
 
 const AccountingMeter = () => {
     const [loading, setLoading] = useState(true)
     const [AccountingMeterData, setAccountingMeterData] = useState();
     const component = true;
-    console.log(AccountingMeter);
-
+    const {productsForHome } = useContext(AuthContext)
     useEffect(() => {
 
-        axios.get("/accounting-meters/all")
-            .then(response => {
-                setAccountingMeterData(response.data.slice(0, 4))
-                console.log(response.data);
-                setLoading(false)
-            }).catch(err => {
-                console.log(err)
-                setLoading(false)
-            })
+        // axios.get("/accounting-meters/all")
+        //     .then(response => {
+        //         setAccountingMeterData(response.data.slice(0, 4))
+        //         setLoading(false)
+        //     }).catch(err => {
+        //         setLoading(false)
+        //     })
 
+        const inverters = productsForHome?.filter(e=> e.type=='inverter')
+        setAccountingMeterData(inverters)
 
-    }, []);
+        setLoading(false)
+    }, [productsForHome]);
     return (
         <div>
             <>

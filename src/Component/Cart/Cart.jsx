@@ -20,9 +20,7 @@ const Cart = () => {
 
     useEffect(() => {
         const newPrice = cart.reduce((acc, current) => {
-            console.log('quantity', current.quantity);
             const productPrice = current.quantity * current.price
-            // console.log('current : ', current);
             return acc + productPrice;
         }, 0)
         setTotalPrice(newPrice);

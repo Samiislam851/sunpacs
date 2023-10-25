@@ -1,0 +1,19 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const ActiveLink = ({ to, children }) => {
+  return (
+    <>
+      <NavLink
+        to={to}
+        className={({ isActive, isPending }) =>
+          isActive ? "text-[#ffa400] active font-semibold  " : "font-semibold  text-gray-500"
+        }
+      >
+        {children}
+      </NavLink>
+    </>
+  );
+}
+
+export default ActiveLink;

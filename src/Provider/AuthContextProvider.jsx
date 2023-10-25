@@ -76,9 +76,13 @@ useEffect(() => {
     console.log(userMongoData.email);
   }
 }, [userMongoData, cartToggle]);
+const [productsForHome, setProductsForHome] = useState([]);
 
-
-
+useEffect(() => {
+axios.get('/products').then(res=> {
+  setProductsForHome(res.data)
+})
+}, []);
 
 
 
@@ -160,7 +164,7 @@ useEffect(() => {
   }, []);
 
 
-  const authInfo = { registerUser, cartToggle, setCartToggle, user, logOut, loginUser , isLogged, setIsLogged ,toastPush,isAdmin, isStudent, isInstructor,loading , adminStateLoading,userData, setUserData,setTheme, handleToggle,dark,theme,userMongoData,cart,refetchUser, setRefetchUser}  ;
+  const authInfo = { registerUser, cartToggle, setCartToggle, user, logOut, loginUser , isLogged, setIsLogged ,toastPush,isAdmin, isStudent, isInstructor,loading , adminStateLoading,userData, setUserData,setTheme, handleToggle,dark,theme,userMongoData,cart,refetchUser, setRefetchUser, productsForHome}  ;
   return (
     <AuthContext.Provider value={authInfo}>{!loading && children}</AuthContext.Provider>
   );

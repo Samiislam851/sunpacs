@@ -5,7 +5,7 @@ import ActiveLink from '../../Component/ActiveLink/ActiveLink';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { BsFillCartFill } from 'react-icons/bs';
+import { BsFillCartFill, BsSun, BsSunFill } from 'react-icons/bs';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import Cart from '../../Component/Cart/Cart';
 
@@ -72,7 +72,7 @@ console.log('user role..........................................................
           <div className="flex justify-between items-center   border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <a href="#">
-                <h1 className='h-8 w-auto sm:h-10 text-gray-700 md:text-4xl text-2xl font-semibold flex gap-2 justify-center items-center  themeFont'> SunPacs </h1>
+                <h1 className='h-8 w-auto sm:h-10 text-gray-700 md:text-4xl text-2xl font-semibold flex gap-2 justify-center items-center  themeFont'><BsSunFill className='inline text-yellow-500 pt-1'/>  SunPacs </h1>
 
               </a>
             </div>

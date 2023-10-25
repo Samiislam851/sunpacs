@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Spinner from '../Spinner/Spinner';
 import axios from 'axios';
 import InverterCard from '../InverterCard/InverterCard';
+import { AuthContext } from '../../Provider/AuthContextProvider';
 
 const RmcableAndBatteries = () => {
     const [loading, setLoading] = useState(true)
     const [AccountingMeterData, setAccountingMeterData] = useState();
     const component = true;
     console.log(AccountingMeterData);
-
+    const {productsForHome } = useContext(AuthContext)
     useEffect(() => {
 
-        axios.get("/rmcable-and-batteries/all")
-            .then(response => {
-                setAccountingMeterData(response.data.slice(0, 4))
-                console.log(response.data);
-                setLoading(false)
-            }).catch(err => {
-                console.log(err)
-                setLoading(false)
-            })
+        // axios.get("/rmcable-and-batteries/all")
+        //     .then(response => {
+        //         setAccountingMeterData(response.data.slice(0, 4))
+        //         console.log(response.data);
+        //         setLoading(false)
+        //     }).catch(err => {
+        //         console.log(err)
+        //         setLoading(false)
+        //     })
+
+
+        const inverters = productsForHome?.filter(e=> e.type== 'battery' || e.type=='RMCable')
+        setAccountingMeterData(inverters)
+        setLoading(false)
 
 
     }, []);

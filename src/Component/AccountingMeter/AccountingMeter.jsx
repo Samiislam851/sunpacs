@@ -19,7 +19,7 @@ const AccountingMeter = () => {
         //         setLoading(false)
         //     })
 
-        const inverters = productsForHome?.filter(e=> e.type=='inverter')
+        const inverters = productsForHome?.filter(e=> e.type=='accounting meter')
         setAccountingMeterData(inverters)
 
         setLoading(false)

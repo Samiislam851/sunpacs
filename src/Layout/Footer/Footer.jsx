@@ -6,26 +6,8 @@ const Footer = () => {
   return (
     <>
 
-     <div className="bg-[#dddddd] text-gray-300 md:px-32 pt-10 md:mt-0 md:pb-20">
-  {/* <footer className="footer bg-transparent text-gray-600 text-xl p-10 bg-base-200 text-base-content mt-0">
-    <div>
-      <span className="text-2xl font-bold text-gray-700">Services</span>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Music Courses</a>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Instrument Lessons</a>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Songwriting Workshops</a>
-    </div>
-    <div>
-      <span className="text-2xl font-bold text-gray-700">Legal</span>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Terms of Use</a>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Privacy Policy</a>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">Cookie Policy</a>
-    </div>
-    <div>
-      <span className="text-2xl font-bold text-gray-700">Company</span>
-      <a className="link link-hover font-medium text-lg text-gray-500 ">About Us</a>
-      <Link to='/contact' className="link link-hover font-medium text-lg text-gray-500 ">Contact</Link>
-    </div>
-  </footer> */}
+     <div className="bg-[#dddddd] text-gray-400 md:px-32 pt-10 md:mt-0 md:pb-20">
+ 
   <footer className="footer bg-transparent text-white px-10 py-4 bg-base-200 text-base-content border-base-300">
     <div className="items-center text-gray-500 grid-flow-col">
 

@@ -6,7 +6,8 @@ import axios from "axios";
 
 export const getUserMongoData = createAsyncThunk('mongoUserData/getUserMongoData', async (email) => {
 
-    const res = axios.get(axios.get(`users/${email}`))
+    const res =await axios.get(`users/${email}`)
+    console.log(email);
     return res.data
 
 })

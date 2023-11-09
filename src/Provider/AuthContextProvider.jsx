@@ -21,13 +21,12 @@ const auth = getAuth(app);
 const AuthContextProvider = ({ children }) => {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
-  const { userMongoData, isAdmin,  error } = useSelector((state) => state.user);
+  console.log(state);
+  const { userMongoData, isAdmin, error } = useSelector((state) => state.mongodbUserReducer);
   const [user, setUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(true);
   // const [isAdmin, setIsAdmin] = useState(false);
-  const [isInstructor, setIsInstructor] = useState(false);
-  const [isStudent, setIsStudent] = useState(false);
   const [token, setToken] = useState(false);
   const [userData, setUserData] = useState(false);
   const [adminStateLoading, setAdminStateLoading] = useState(true)
@@ -42,7 +41,7 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-console.log(userMongoData);
+  console.log(userMongoData);
 
 
 
@@ -72,11 +71,12 @@ console.log(userMongoData);
 
     //   }
     // )
+    console.log('line before dispatch...................................................................llllllll');
     dispatch(getUserMongoData(user?.email))
-    
 
+    console.log('line after dispatch...................................................................llllllll');
 
-  }, [user, refetchUser,dispatch, user?.email]);
+  }, [user, refetchUser]);
 
   ////////////////////////////////////////////////////////cart/////////////////////////////////////////////////
 
@@ -187,7 +187,7 @@ console.log(userMongoData);
   }, []);
 
 
-  const authInfo = { registerUser, cartToggle, setCartToggle, user, logOut, loginUser, isLogged, setIsLogged, toastPush, isAdmin, isStudent, isInstructor, loading, adminStateLoading, userData, setUserData, setTheme, handleToggle, dark, theme, userMongoData, cart, refetchUser, setRefetchUser, productsForHome };
+  const authInfo = { registerUser, cartToggle, setCartToggle, user, logOut, loginUser, isLogged, setIsLogged, toastPush, isAdmin, loading, adminStateLoading, userData, setUserData, setTheme, handleToggle, dark, theme, userMongoData, cart, refetchUser, setRefetchUser, productsForHome };
   return (
     <AuthContext.Provider value={authInfo}>{!loading && children}</AuthContext.Provider>
   );

@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserMongoData } from "../features/userMongoSlice/userMongoSlice";
 
 
 
@@ -17,10 +19,13 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthContextProvider = ({ children }) => {
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  const { userMongoData, isAdmin,  error } = useSelector((state) => state.user);
   const [user, setUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [isInstructor, setIsInstructor] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
   const [token, setToken] = useState(false);
@@ -28,10 +33,19 @@ const AuthContextProvider = ({ children }) => {
   const [adminStateLoading, setAdminStateLoading] = useState(true)
   const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
   const [dark, setDark] = useState(false);
-  const [userMongoData, setUserMongoData] = useState(null);
+  // const [userMongoData, setUserMongoData] = useState(null);
   const [cartToggle, setCartToggle] = useState(true);
   const [cart, setCart] = useState([]);
   const [refetchUser, setRefetchUser] = useState(true);
+
+
+
+
+
+console.log(userMongoData);
+
+
+
 
   const registerUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -44,24 +58,25 @@ const AuthContextProvider = ({ children }) => {
   }, [theme]);
 
 
-  // const { registerUser, user, logOut, loginUser, isLogged, setIsLogged, ,} = useContext(AuthContext);
-  // const [userData, setUserData] = useState(null);
+
 
   useEffect(() => {
-    axios.get(`users/${user?.email}`).then(
-      res => {
-        setUserMongoData(res.data)
-        if (res.data?.role == "admin") {
-          setIsAdmin(true)
-          setIsStudent(false)
-          setAdminStateLoading(false)
-        }
+    // axios.get(`users/${user?.email}`).then(
+    //   res => {
+    //     setUserMongoData(res.data)
+    //     if (res.data?.role == "admin") {
+    //       setIsAdmin(true)
+    //       setIsStudent(false)
+    //       setAdminStateLoading(false)
+    //     }
 
-      }
-    )
+    //   }
+    // )
+    dispatch(getUserMongoData(user?.email))
+    
 
 
-  }, [user, refetchUser]);
+  }, [user, refetchUser,dispatch, user?.email]);
 
   ////////////////////////////////////////////////////////cart/////////////////////////////////////////////////
 

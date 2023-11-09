@@ -1,31 +1,29 @@
-import { useState ,createContext } from 'react'
- 
-import RouteHandle from './Config/RouteHandle';
- 
-import AuthContextProvider from './Provider/AuthContextProvider';
- import axios from 'axios'; 
- axios.defaults.baseURL = "https://electrahaven-samiislam851.vercel.app/";
-//  import {
-//   QueryClient,
-//   QueryClientProvider,
-//   useQuery,
-// } from '@tanstack/react-query'
+import { useState, createContext } from 'react'
 
-// const queryClient = new QueryClient()
-//  axios.defaults.baseURL = "http://192.168.0.123:5000/"
-//  axios.defaults.baseURL = "https://mongo.raihanmiraj.com/"
- function App() {
- 
+import RouteHandle from './Config/RouteHandle';
+
+import AuthContextProvider from './Provider/AuthContextProvider';
+import axios from 'axios';
+import { Provider } from 'react-redux';
+axios.defaults.baseURL = "https://electrahaven-samiislam851.vercel.app/";
+import store from './app/store'
+
+function App() {
+
 
 
   return (
     <>
-   <AuthContextProvider>
- 
-   <RouteHandle />
-   
-   
-   </AuthContextProvider>
+      <Provider store={store}>
+
+
+        <AuthContextProvider>
+
+          <RouteHandle />
+
+
+        </AuthContextProvider>
+      </Provider>
     </>
   )
 }
